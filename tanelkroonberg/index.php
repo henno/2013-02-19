@@ -56,7 +56,7 @@ $a = $_GET['arv_a'];
     {
         $Session_nr['proov']++;
 
-        if ($Session_nr['proov'] > 3){
+        if ($Session_nr['proov'] < 3){
 
             echo "Proov number {$Session_nr['proov']} <br />" ;
         }
