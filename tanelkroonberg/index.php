@@ -27,6 +27,7 @@ if(empty($sess_nr)){
 
 <?php
 
+if (isset($sess_nr)){
 if (empty($Session_nr['number'])){      //if $Session_nr is empty - set number and proov
 
     $Session_nr['proov'] = 0;
@@ -68,7 +69,7 @@ $a = $_GET['arv_a'];
     }
 
 }
-
+}
 
 
 
