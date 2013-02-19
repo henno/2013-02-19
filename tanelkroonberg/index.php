@@ -1,12 +1,47 @@
 <?php
 
 //start of session
-$sess_nr = session_id();
+$session_id = session_id();
 
-if(empty($sess_nr)){
-
+if (empty($session_id)) {
     session_start();
-}//end
+}
+//end
+
+
+if (isset($_POST['arv_a'])) { //if arv_a is set make operations
+
+    $a = $_POST['arv_a'];
+
+    if ($a < 1 || $a > 10) {
+        echo "Ainult arvud 1-10";
+    }
+    elseif ($a == $_SESSION['number']) {
+        echo "Sinu v6it, palju 6nne!!!";
+        unset ($_SESSION['number']);
+    }
+    else {
+        $_SESSION['proov']++;
+
+        if ($_SESSION['proov'] < 3) {
+
+            echo "Proov number {$_SESSION['proov']} <br />";
+        }
+        elseif ($_SESSION['proov'] == 3 ){
+            echo "Proov number 3, rohkem ei saa!";
+            unset($_SESSION['proov']);
+
+        }
+    }
+}
+
+if (empty($_SESSION['number'])) { //if $Session_nr is empty - set number and proov
+
+    $_SESSION['proov'] = 0;
+    $_SESSION['number'] = rand(1, 10);
+
+
+}
 ?>
 
 <html>
@@ -18,63 +53,10 @@ if(empty($sess_nr)){
 </head>
 <body>
 <form method="post" action="">
-    Sinu pakkumine:<input type="text" name="arv_a"><br />
-    <button>Arva!</button>
+    Sinu pakkumine:<input type="text" name="arv_a"><br/>
+    <button>Sisesta!</button>
+
 </form>
 
 </body>
 </html>
-
-<?php
-
-if (isset($sess_nr)){
-if (empty($Session_nr['number'])){      //if $Session_nr is empty - set number and proov
-
-    $Session_nr['proov'] = 0;
-    $Session_nr['number'] = rand(1,10);
-}
-
-
-if (isset($_POST['arv_a'])){     //if arv_a is set make operations
-
-$a = $_POST['arv_a'];
-
-    if($a < 1 && $a > 10){
-
-        echo "Ainult arvud 1-10";
-        unset($Session_nr['number']);
-
-    }
-
-
-    elseif($a == $Session_nr['number']){
-
-        echo "Sinu v6it, palju 6nne!!!";
-        unset($Session_nr['number']);
-    }
-
-    else
-    {
-        $Session_nr['proov']++;
-
-        if ($Session_nr['proov'] < 3){
-
-            echo "Proov number {$Session_nr['proov']} <br />" ;
-        }
-        else{
-            echo "Proov number 3, rohkem ei saa!";
-            unset($Session_nr['proov']);
-        }
-
-    }
-
-}
-}
-
-
-
-?>
-
-
-
-
