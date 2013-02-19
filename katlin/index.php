@@ -1,8 +1,7 @@
 <?php
 error_reporting(0);
 session_start();
-/*$arv = rand(1,25);
-$_SESSION['arv']=$arv;*/
+$arv = rand(1,25);
 $arv=$_SESSION['arv'];
 //echo $_SESSION['arv'];
 ?>
