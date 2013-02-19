@@ -2,7 +2,9 @@
 session_start();
 $_SESSION["number"]= rand(1,10);
 
-
+if (!isset($_SESSION["number"])){
+    $_SESSION["number"]=rand(1,10);
+}
 ?>
 <form method="post">
     Sisesta arv 1-10: <input type="text" name="a"><br>
@@ -12,7 +14,8 @@ $_SESSION["number"]= rand(1,10);
 <?php
 if (isset($_POST["a"])){
     if ($_POST["a"]== $_SESSION["number"] ){
-        echo "palju õnne";
+        echo "palju õnne! Genereeriti uus number";
+        $_SESSION["number"]= rand(1,10);
     }
     elseif ($_POST["a"]>$_SESSION["number"]){
         echo "number on väiksem";
@@ -24,4 +27,5 @@ if (isset($_POST["a"])){
         echo "siseta number";
     }
 }
+
 ?>
