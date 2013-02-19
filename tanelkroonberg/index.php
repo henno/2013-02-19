@@ -17,7 +17,7 @@ if(empty($sess_nr)){
     </title>
 </head>
 <body>
-<form method="get">
+<form method="post">
     Sinu pakkumine:<input type="text" name="arv_a"><br />
     <input type="button" value="Sisesta!">
 </form>
@@ -35,9 +35,9 @@ if (empty($Session_nr['number'])){      //if $Session_nr is empty - set number a
 }
 
 
-if (isset($_GET['arv_a'])){     //if arv_a is set make operations
+if (isset($_POST['arv_a'])){     //if arv_a is set make operations
 
-$a = $_GET['arv_a'];
+$a = $_POST['arv_a'];
 
     if($a < 1 && $a > 10){
 
