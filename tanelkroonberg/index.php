@@ -17,9 +17,9 @@ if(empty($sess_nr)){
     </title>
 </head>
 <body>
-<form method="post">
+<form method="post" action="">
     Sinu pakkumine:<input type="text" name="arv_a"><br />
-    <input type="button" value="Sisesta!">
+    <button>Arva!</button>
 </form>
 
 </body>
